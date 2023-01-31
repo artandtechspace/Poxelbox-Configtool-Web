@@ -2,7 +2,12 @@ import type { CategoryObject, ImportObject } from "@/schema/DataTypes";
 import { useStore } from "@/userinterface/Store";
 import { validateData } from "./Validation";
 
+// Returns the uri of a requested api endpoint
+function getURI(path: string){
+    return `http://${useStore().endpoint}/${path}`;
+}
 
+// Returns the currently loaded data as exported data that is expected by the api
 function getExportedData(){
     // Gets the currently loaded data
     const data: ImportObject = useStore().data!;
@@ -35,7 +40,7 @@ export async function pushData(){
     try{
         console.log("Sending ",JSON.stringify(getExportedData()));
         // Fetches the data from the remote system
-        await fetch("http://localhost:5555/api/push-view",{
+        await fetch(getURI("api/push-view"),{
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -60,7 +65,7 @@ export async function fetchRemoteData() : Promise<false|ImportObject>{
     try {
 
         // Fetches the data from the remote system
-        var data = await (await fetch("http://localhost:5555/api/get-view")).json();
+        var data = await (await fetch(getURI("api/get-view"))).json();
 
         // Ensures the data is valid
         if (!validateData(data)) {

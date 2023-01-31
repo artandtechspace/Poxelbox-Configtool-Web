@@ -9,6 +9,7 @@ import TheNavbar from './structure/navbar/TheNavbar.vue';
 import Loader from './utils/Loader.vue';
 import ThePopup from './popup/ThePopup.vue';
 import Icon from './utils/Icon.vue';
+import TheAdvancedHeader from './structure/header/TheAdvancedHeader.vue';
 
 const store = useStore();
 
@@ -24,7 +25,7 @@ export default {
     },
     mounted() {
     },
-    components: { TheSplitView, TheList, TheHeader, TheNavbar, Loader, ThePopup, Icon }
+    components: { TheSplitView, TheList, TheHeader, TheNavbar, Loader, ThePopup, Icon, TheAdvancedHeader }
 
 }
 
@@ -35,7 +36,10 @@ export default {
 
     <TheSplitView>
         <template #left>
-            <TheHeader/>
+            <div class="header-shadow">
+                <TheHeader/>
+                <TheAdvancedHeader v-if="store.isAdvancedMode"/>
+            </div>
             <div class="container">
                 <TheList v-if="store.data !== undefined" />
                 <div class="nodata" v-else>
@@ -74,6 +78,10 @@ export default {
             width: 5rem;
             height: 5rem;
         }
+    }
+
+    .header-shadow{
+        box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.491);
     }
 
 }

@@ -17,6 +17,7 @@ export const useStore = defineStore("base", {
             isAdvancedMode: false,
             filter: "",
 
+            endpoint: window.location.host,
 
             popup:{
                 isOpen: false,

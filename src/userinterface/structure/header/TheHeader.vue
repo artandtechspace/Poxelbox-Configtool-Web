@@ -2,6 +2,7 @@
 import { useStore } from '@/userinterface/Store';
 import { ValueTypes } from "@/schema/DataTypes";
 import Spacer from '@/userinterface/utils/Spacer.vue';
+import { mapStores } from 'pinia';
 
 const store = useStore();
 
@@ -9,12 +10,21 @@ const store = useStore();
 
 <script lang="ts">
 export default {
-    components: { Spacer }
+    components: { Spacer },
+    computed:{
+        ...mapStores(useStore),
+        getClasses(){
+            return [
+                "header",
+                this.baseStore.isAdvancedMode ? 'header-shadow' : ''
+            ].join(" ");
+        }
+    }
 }
 </script>
 
 <template>
-    <div class="header">
+    <div :class="getClasses">
         <input class="search" type="text" v-model="store.filter" placeholder="Süchen...">
         <Spacer/>
         <span>Advanced Mode:</span>
@@ -31,7 +41,6 @@ export default {
     white-space: nowrap;
     padding: .5rem;
     align-items: center;
-    box-shadow: 2px 0px 20px rgba(0, 0, 0, 0.491);;
 
     .wrapper{
         display: flex;
