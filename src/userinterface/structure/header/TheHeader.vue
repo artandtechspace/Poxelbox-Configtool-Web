@@ -25,7 +25,7 @@ export default {
 
 <template>
     <div :class="getClasses">
-        <input class="search" type="text" v-model="store.filter" placeholder="Süchen...">
+        <input class="search" type="text" v-model="store.filter" placeholder="@Section... Baudrate...">
         <Spacer/>
         <span>Advanced Mode:</span>
         <div class="wrapper">

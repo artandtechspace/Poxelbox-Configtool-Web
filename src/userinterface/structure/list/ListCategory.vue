@@ -41,16 +41,25 @@ export default {
     computed:{
         getFilteredItems(){
             const store=useStore();
-            
-            // Gets the basic filter-string in lowercase
-            const filterName = store.filter.toLowerCase();
 
-            // Filters all items
+            const filters = store.getAppliedFilters;
+
+            // Checks if this category applies to that filter
+            if(filters.category !== undefined && !this.categoryName.startsWith(filters.category))
+                return {};
+
+            // Checks if the item filter is not set
+            if(filters.item === undefined)
+                return this.category;
+
+            // Holds all filtered items to be returned
             var filteredItems : CategoryObject = {};
+            
+            // Filters for item names
             for(var name in this.category){
                 var value = this.category[name];
 
-                if(value.title && value.title!.toLowerCase().indexOf(filterName)>-1)
+                if(value.title && value.title!.toLowerCase().indexOf(filters.item)>-1)
                     filteredItems[name] = value;
             }
 
