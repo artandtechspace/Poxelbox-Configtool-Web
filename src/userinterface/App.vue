@@ -2,12 +2,10 @@
 import { useStore } from './Store';
 import TheSplitView from "./structure/TheSplitView.vue";
 import TheList from "./structure/list/TheList.vue";
-import type { CategoryObject, ImportObject } from "@/schema/DataTypes";
 import TheHeader from "./structure/header/TheHeader.vue";
-import { fetchRemoteData } from '@/remote/RemoteCommunication';
 import TheNavbar from './structure/navbar/TheNavbar.vue';
 import Loader from './utils/Loader.vue';
-import ThePopup from './popup/ThePopup.vue';
+import ThePopup from './structure/popup/ThePopup.vue';
 import Icon from './utils/Icon.vue';
 import TheAdvancedHeader from './structure/header/TheAdvancedHeader.vue';
 

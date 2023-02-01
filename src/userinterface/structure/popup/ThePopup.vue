@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useStore } from '@/userinterface/Store';
-import Icon from '../utils/Icon.vue';
+import Icon from '../../utils/Icon.vue';
 
 const store = useStore();
 
