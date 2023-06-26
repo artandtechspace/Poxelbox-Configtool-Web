@@ -40,4 +40,5 @@ i{
 .ic-dropdown{ background: url("@/assets/icons/Dropdown.png"); }
 .ic-close{ background: url("@/assets/icons/Close.png"); }
 .ic-face{ background: url("@/assets/icons/Face.svg"); }
+.ic-info{ background: url("@/assets/icons/Info.svg"); }
 </style>

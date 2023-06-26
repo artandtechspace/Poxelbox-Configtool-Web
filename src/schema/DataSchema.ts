@@ -3,7 +3,8 @@ function getBasicValues(typeName: string) {
     return {
         "type": { "type": "string", "pattern": typeName },
         "desc": { "type": "string" },
-        "title": { "type": "string" }
+        "title": { "type": "string" },
+		"link": { "type": "string", "pattern": "^https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)$"}
     }
 }
 

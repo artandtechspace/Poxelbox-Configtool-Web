@@ -45,7 +45,10 @@ export default {
         <div class="header">
             <span>{{ itm.title || `[${name}]` }}:</span>
             <slot />
-            <Icon class="" v-if="hasDescription" name="dropdown" @click="isDescToggled = !isDescToggled" />
+            <Icon class="dropdown" v-if="hasDescription" name="dropdown" @click="isDescToggled = !isDescToggled" />
+            <a target="_blank" :href="itm.link" title="Mehr Informationen" v-if="itm.link !== undefined">
+                <Icon class="" name="info"/>
+            </a>
         </div>
         <div class="description" v-if="hasDescription && isDescToggled">
             <div v-if="itm.desc">
@@ -81,7 +84,11 @@ export default {
         font-size: 1rem;
         display: flex;
 
-        i{
+        a {
+            display: flex;
+        }
+
+        i.dropdown{
             flex-shrink: 0;
             cursor: pointer;
             transform: rotate(90deg);
@@ -91,7 +98,7 @@ export default {
     }
 
     &.withDesc i{
-        transform: rotate(0);
+        transform: rotate(0) !important;
         transition: .2s;
     }
 

@@ -16,7 +16,8 @@ export interface BasicValue<Value>{
     value: Value,
     title?: string,
     type: ValueTypes,
-    desc?: string
+    desc?: string,
+    link?: string
 }
 
 
