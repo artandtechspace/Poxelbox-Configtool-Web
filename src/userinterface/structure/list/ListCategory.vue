@@ -45,7 +45,7 @@ export default {
             const filters = store.getAppliedFilters;
 
             // Checks if this category applies to that filter
-            if(filters.category !== undefined && !this.categoryName.startsWith(filters.category))
+            if(filters.category !== undefined && !this.categoryName.toLowerCase().startsWith(filters.category))
                 return {};
 
             // Checks if the item filter is not set
